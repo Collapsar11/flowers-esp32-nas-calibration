@@ -38,6 +38,23 @@ The source-change manifest records original source hashes. The published numeric
 
 ## 5. Interpretation
 
-The main method was the structural ridge model. Do not relabel the better proportional baseline as the prespecified primary method after observing results. Raw MACs is a ranking baseline, not a millisecond estimate. QEMU timing is never physical-device latency evidence. Golden-output agreement establishes functional equivalence, not 100% classification accuracy.
+统一对外表述见 [实验流程与结果（队友同步版）](EXPERIMENT_RESULTS.md)。
 
-Selection used validation accuracy; test accuracy is final reporting only. The selected model's 89.4942% test accuracy is below 90%, despite successful hardware/resource checks. No retrospective replacement was performed.
+实验已经跑完。在当前这块板和这批候选上，用 6 个网络的实测数据，能够较准确地预测另外 9 个网络的延迟，并选中实际最快的网络，说明少量实测校准这条路线是可行的。
+
+但目前复杂校准方法没有超过简单基线：主方法平均误差为 **6.06%**，简单 MACs 比例校准为 **3.74%**；直接按 MACs 排序也选中了同一个网络。内存仿真本来就准确，因此没有体现额外的内存校准收益。
+
+另外，选中网络的测试精度只有 **89.49%**，如果最终要求测试精度 ≥90%，就还没有完全达标。**目前证明了流程可行，但没有证明复杂方法更优，也还不能说全部性能要求都满足了。**
+
+决策阶段只用了 **6 个网络的硬件标签**；为了验证结果，评估阶段又测了其余 9 个。不能说“总共只实测了 6 个”。相对穷举 15 个，决策所需标签数量减少 60%，不等于整个实验耗时减少 60%。
+
+## 指标口径
+
+- 平均延迟误差指 9 个查询网络上的 MAPE（平均绝对百分比误差）；主方法为 `structure_ridge_primary`，简单基线为 `scaled_macs`。
+- 选中网络的延迟预测误差为 **2.34%**；所有方法都选中同一个网络，未体现主方法相对 MACs 的额外选型收益。
+- 精度指 Flowers 102 的 Top-1 分类准确率。选型使用验证集；最终测试集只作报告，不参与重新选型。
+- 模型存储限制为 12 MiB，模型相关 PSRAM 限制为 6 MiB，增量内部堆限制为 192 KiB；这些内存指标不等于整机总 SRAM 占用。
+- 延迟是固定运行时下的 `Invoke` 耗时。没有预先定义实际应用的延迟上限，所以“选中最快”不代表达到某个实际应用的速度要求。
+- 原始结果、预测锁和审计记录保持不变。本说明只统一实验流程和结果表述。
+
+The main method remains structural ridge; the better proportional method remains a baseline. QEMU timing is not physical-device latency evidence. Golden-output agreement is functional equivalence, not 100% classification accuracy.

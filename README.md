@@ -4,19 +4,40 @@ IERG5250 course experiment: generate and train edge-compatible image classifiers
 
 本仓库保存实验代码、15 个候选的架构和可复算的汇总结果。原始实板日志、模型权重、测量固件和完整交付包保存在本地，不提交到 Git 历史。
 
-## Experiment
+## 实验流程与结果
 
-1. Search a pretrained OFA MobileNetV3 space, then fully train and quantize candidates on Flowers 102.
-2. Freeze 15 candidates after validation accuracy, model storage, memory and TFLite Micro/QEMU checks.
-3. Measure six fixed support networks on ESP32-S3 and freeze calibration, predictions and decisions.
-4. Predict the remaining nine and choose a network using validation accuracy and hardware constraints.
-5. Measure those nine only for independent evaluation. No query-label fitting or retrospective reselection.
+**实验流程：**
+15 个合格候选 → 实测其中 6 个 → 校准硬件指标估计 → 预测剩余 9 个 → 根据精度、内存和延迟要求筛选 → 选出 1 个网络 → 评估指标。
+
+这里的“合格”指通过验证集精度、模型存储、内存和仿真检查，不代表所有网络的最终测试精度都达到 90%。
+
+| 步骤 | 做了什么 | 得到的结果 |
+|---|---|---|
+| 1. 得到 15 个候选 | 用 NAS 搜索网络，完成训练、量化和仿真验证 | 15 个网络通过验证集精度和资源约束检查 |
+| 2. 实测其中 6 个 | 在 ESP32-S3 上测量，每个网络做 3 次独立内存采样和 3 次独立计时采样 | 得到 6 个网络的真实延迟和内存数据 |
+| 3. 校准硬件估计 | 用这 6 个网络的数据，建立 MACs／结构指标到真实延迟的映射，并检查内存偏差 | 得到校准模型；内存修正量为 0 |
+| 4. 预测剩余 9 个 | 预测未参与校准的 9 个网络，冻结预测结果 | 得到 9 个网络的预计延迟和内存占用 |
+| 5. 按要求筛选 | 先检查验证集精度 ≥90%、模型存储和内存限制，再比较预计延迟 | 在满足这些约束的候选中选择预计延迟最低的网络 |
+| 6. 选出 1 个网络 | 锁定 `0ec51e472c33beae`，再进行实板验证并报告最终测试精度 | 预测延迟 **1364.80 ms**，实测 **1333.58 ms**；内存通过；测试精度 **89.49%** |
+| 7. 评估指标 | 实测全部 9 个查询网络，对比冻结预测；不用于重新校准或选型 | 主方法平均延迟误差 **6.06%**；简单 MACs 比例校准误差 **3.74%**；选中的网络确实是这 9 个中最快的 |
+
+## 结论
+
+实验已经跑完。在当前这块板和这批候选上，用 6 个网络的实测数据，能够较准确地预测另外 9 个网络的延迟，并选中实际最快的网络，说明少量实测校准这条路线是可行的。
+
+但目前复杂校准方法没有超过简单基线：主方法平均误差为 **6.06%**，简单 MACs 比例校准为 **3.74%**；直接按 MACs 排序也选中了同一个网络。内存仿真本来就准确，因此没有体现额外的内存校准收益。
+
+另外，选中网络的测试精度只有 **89.49%**，如果最终要求测试精度 ≥90%，就还没有完全达标。**目前证明了流程可行，但没有证明复杂方法更优，也还不能说全部性能要求都满足了。**
+
+决策阶段只用了 **6 个网络的硬件标签**；为了验证结果，评估阶段又测了其余 9 个。不能说“总共只实测了 6 个”。相对穷举 15 个，决策所需标签数量减少 60%，不等于整个实验耗时减少 60%。
+
+完整口径见 [队友同步版](docs/EXPERIMENT_RESULTS.md)。
+
+## Hardware and detailed metrics
 
 Hardware: ESP32-S3-N16R8, 16 MB Flash, 8 MB Octal PSRAM; CPU 240 MHz, PSRAM 80 MHz. Runtime: TFLite Micro with ESP-NN. Input: 160 × 160 RGB images. This is image **classification**, using a public dataset; no camera or cloud upload is required.
 
 Each architecture has three independent memory boots and three independent timing boots. Each timing boot uses 10 warmups and 204 timed invocations. The latency label is the median of three session medians. Memory labels are the maximum across three sessions. Timing covers `Invoke`, excluding input transfer, serial logging and output comparisons.
-
-## Results
 
 Independent evaluation on the nine held-out networks:
 
@@ -26,14 +47,6 @@ Independent evaluation on the nine held-out networks:
 | Proportional MACs calibration | 6 | **3.7371%** | **81.081** | 1.0000 |
 | Log-MACs ridge | 6 | 6.3134% | 128.289 | 1.0000 |
 | Structure ridge, prespecified primary | 6 | 6.0550% | 136.554 | 0.9667 |
-
-All methods selected `0ec51e472c33beae`, the actual fastest held-out candidate. Primary prediction: **1364.798 ms**; measured: **1333.577 ms**; error: **2.3412%**. Selected model storage is 3,593,216 bytes and model-related PSRAM peak is 757,128 bytes.
-
-The measured results support low-measurement-budget **absolute latency calibration** on this board and candidate set. They do **not** demonstrate that the primary structural model improves over the simple proportional baseline, or that calibration improves selection over raw MACs. The QEMU memory baseline was already exact for the measured metrics; the six-label memory correction was zero.
-
-**Accuracy limitation:** selection used validation accuracy ≥90%. The selected model has validation Top-1 **93.2353%**, but final test Top-1 **89.4942%**. It does not satisfy a final-test ≥90% requirement. Twelve of the 15 candidates reach 90% on the full test set. Test labels were not used for training or selection.
-
-Six of 15 hardware labels were used to make the decision: a **60% label-count reduction** compared with exhaustive acquisition. The evaluation campaign nevertheless measured all 15. This is not a claim of 60% end-to-end time saving. Results cover one board, fixed clocks/runtime and one candidate set; no application latency SLA or cross-device generalization has been established. Internal heap increments do not measure total SRAM usage.
 
 ## Reproduce the published numbers
 
