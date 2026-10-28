@@ -31,7 +31,7 @@ IERG5250 course experiment: generate and train edge-compatible image classifiers
 
 决策阶段只用了 **6 个网络的硬件标签**；为了验证结果，评估阶段又测了其余 9 个。不能说“总共只实测了 6 个”。相对穷举 15 个，决策所需标签数量减少 60%，不等于整个实验耗时减少 60%。
 
-完整口径见 [队友同步版](docs/EXPERIMENT_RESULTS.md)。
+完整口径见 [实验流程与结果](docs/EXPERIMENT_RESULTS.md)。
 
 ## Hardware and detailed metrics
 

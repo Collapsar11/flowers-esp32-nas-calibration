@@ -38,7 +38,7 @@ The source-change manifest records original source hashes. The published numeric
 
 ## 5. Interpretation
 
-统一对外表述见 [实验流程与结果（队友同步版）](EXPERIMENT_RESULTS.md)。
+统一对外表述见 [实验流程与结果](EXPERIMENT_RESULTS.md)。
 
 实验已经跑完。在当前这块板和这批候选上，用 6 个网络的实测数据，能够较准确地预测另外 9 个网络的延迟，并选中实际最快的网络，说明少量实测校准这条路线是可行的。
 
