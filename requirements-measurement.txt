@@ -1,0 +1,4 @@
+# Analysis and immutable record handling; matches the server runtime used here.
+numpy==1.24.4
+# Only needed for a later authorized physical serial acquisition; simulation does not import it.
+pyserial==3.5

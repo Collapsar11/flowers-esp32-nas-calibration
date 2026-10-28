@@ -1,0 +1,357 @@
+{
+  "protocol_sha256": "cf36aec24cc79afa03424f708798180b6512b61501239ffe0ccee7ccc44e638b",
+  "created_unix": 1793175911.466314,
+  "source": "physical",
+  "simulation_only": false,
+  "support_ids": [
+    "3ac9595932bf99d7",
+    "2e886c99bc6d480a",
+    "baa866b0d2d03911",
+    "88a9e88027b9df64",
+    "e61faf158fc55410",
+    "4d78e8bc0a994f55"
+  ],
+  "query_ids": [
+    "99c4b7ad0cd1b78c",
+    "800c43cc322ed916",
+    "da55a97c9b13819e",
+    "b0abc0ee21d8d9cd",
+    "0ec51e472c33beae",
+    "8d0174570f15de70",
+    "705384e89fef7ed5",
+    "f32261df6a79ca5e",
+    "31977ff8dec9d005"
+  ],
+  "runtime_fingerprint": "f82fb93f58c8c302623ee456c2865e23a32f99b27d5a1562ae36a5db3e62b51d",
+  "models": {
+    "log_macs_ridge": {
+      "dimensions": 1,
+      "mean": [
+        18.62635040932775
+      ],
+      "scale": [
+        0.2605931653811914
+      ],
+      "coefficients": [
+        0.201835614104571
+      ],
+      "intercept": 7.604690230013493,
+      "alpha": 1.0,
+      "training_count": 6
+    },
+    "structure_ridge_primary": {
+      "dimensions": 3,
+      "mean": [
+        18.62635040932775,
+        16.149758856325807,
+        0.1807119070211194
+      ],
+      "scale": [
+        0.2605931653811914,
+        0.16420068798523677,
+        0.03865995168586485
+      ],
+      "coefficients": [
+        0.11395878942465756,
+        0.0963989218916512,
+        0.0160053473030685
+      ],
+      "intercept": 7.604690230013493,
+      "alpha": 1.0,
+      "training_count": 6
+    }
+  },
+  "scaled_macs_ms_per_mac": 1.640868658322931e-05,
+  "memory_offsets_bytes": {
+    "psram_peak_bytes": 0.0,
+    "internal_heap_peak_bytes": 0.0
+  },
+  "predictions": {
+    "99c4b7ad0cd1b78c": {
+      "raw_macs": {
+        "latency_ms": null,
+        "psram_peak_bytes": 1461160.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "scaled_macs": {
+        "latency_ms": 2562.699744243252,
+        "psram_peak_bytes": 1461160.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "log_macs_ridge": {
+        "latency_ms": 2418.02024710254,
+        "psram_peak_bytes": 1461160.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "structure_ridge_primary": {
+        "latency_ms": 2436.5143156394593,
+        "psram_peak_bytes": 1461160.0,
+        "internal_heap_peak_bytes": 0.0
+      }
+    },
+    "800c43cc322ed916": {
+      "raw_macs": {
+        "latency_ms": null,
+        "psram_peak_bytes": 824488.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "scaled_macs": {
+        "latency_ms": 2786.2327874462244,
+        "psram_peak_bytes": 824488.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "log_macs_ridge": {
+        "latency_ms": 2579.82581952742,
+        "psram_peak_bytes": 824488.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "structure_ridge_primary": {
+        "latency_ms": 2472.1792242750926,
+        "psram_peak_bytes": 824488.0,
+        "internal_heap_peak_bytes": 0.0
+      }
+    },
+    "da55a97c9b13819e": {
+      "raw_macs": {
+        "latency_ms": null,
+        "psram_peak_bytes": 1438568.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "scaled_macs": {
+        "latency_ms": 2536.1570528262205,
+        "psram_peak_bytes": 1438568.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "log_macs_ridge": {
+        "latency_ms": 2398.6001715860184,
+        "psram_peak_bytes": 1438568.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "structure_ridge_primary": {
+        "latency_ms": 2451.7115018029544,
+        "psram_peak_bytes": 1438568.0,
+        "internal_heap_peak_bytes": 0.0
+      }
+    },
+    "b0abc0ee21d8d9cd": {
+      "raw_macs": {
+        "latency_ms": null,
+        "psram_peak_bytes": 1009032.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "scaled_macs": {
+        "latency_ms": 2434.0401516305997,
+        "psram_peak_bytes": 1009032.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "log_macs_ridge": {
+        "latency_ms": 2323.452749015593,
+        "psram_peak_bytes": 1009032.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "structure_ridge_primary": {
+        "latency_ms": 2403.1298346545223,
+        "psram_peak_bytes": 1009032.0,
+        "internal_heap_peak_bytes": 0.0
+      }
+    },
+    "0ec51e472c33beae": {
+      "raw_macs": {
+        "latency_ms": null,
+        "psram_peak_bytes": 757128.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "scaled_macs": {
+        "latency_ms": 1351.535994304253,
+        "psram_peak_bytes": 757128.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "log_macs_ridge": {
+        "latency_ms": 1473.1362430965994,
+        "psram_peak_bytes": 757128.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "structure_ridge_primary": {
+        "latency_ms": 1364.79820619305,
+        "psram_peak_bytes": 757128.0,
+        "internal_heap_peak_bytes": 0.0
+      }
+    },
+    "8d0174570f15de70": {
+      "raw_macs": {
+        "latency_ms": null,
+        "psram_peak_bytes": 1390312.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "scaled_macs": {
+        "latency_ms": 1816.4914871706976,
+        "psram_peak_bytes": 1390312.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "log_macs_ridge": {
+        "latency_ms": 1852.235599434289,
+        "psram_peak_bytes": 1390312.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "structure_ridge_primary": {
+        "latency_ms": 1890.5185393477145,
+        "psram_peak_bytes": 1390312.0,
+        "internal_heap_peak_bytes": 0.0
+      }
+    },
+    "705384e89fef7ed5": {
+      "raw_macs": {
+        "latency_ms": null,
+        "psram_peak_bytes": 989368.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "scaled_macs": {
+        "latency_ms": 1403.8350728772482,
+        "psram_peak_bytes": 989368.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "log_macs_ridge": {
+        "latency_ms": 1517.097975626295,
+        "psram_peak_bytes": 989368.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "structure_ridge_primary": {
+        "latency_ms": 1422.4380542495517,
+        "psram_peak_bytes": 989368.0,
+        "internal_heap_peak_bytes": 0.0
+      }
+    },
+    "f32261df6a79ca5e": {
+      "raw_macs": {
+        "latency_ms": null,
+        "psram_peak_bytes": 831512.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "scaled_macs": {
+        "latency_ms": 2521.1550501263982,
+        "psram_peak_bytes": 831512.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "log_macs_ridge": {
+        "latency_ms": 2387.6036340822925,
+        "psram_peak_bytes": 831512.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "structure_ridge_primary": {
+        "latency_ms": 2298.64963228266,
+        "psram_peak_bytes": 831512.0,
+        "internal_heap_peak_bytes": 0.0
+      }
+    },
+    "31977ff8dec9d005": {
+      "raw_macs": {
+        "latency_ms": null,
+        "psram_peak_bytes": 972440.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "scaled_macs": {
+        "latency_ms": 1987.766932960357,
+        "psram_peak_bytes": 972440.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "log_macs_ridge": {
+        "latency_ms": 1986.1176302213823,
+        "psram_peak_bytes": 972440.0,
+        "internal_heap_peak_bytes": 0.0
+      },
+      "structure_ridge_primary": {
+        "latency_ms": 2020.5450378633611,
+        "psram_peak_bytes": 972440.0,
+        "internal_heap_peak_bytes": 0.0
+      }
+    }
+  },
+  "decisions": {
+    "raw_macs": {
+      "fastest": "0ec51e472c33beae",
+      "accuracy_under_budgets": [
+        {
+          "budget_ms": 1600.9633125000003,
+          "id": null,
+          "applicable": false
+        },
+        {
+          "budget_ms": 2134.6177500000003,
+          "id": null,
+          "applicable": false
+        },
+        {
+          "budget_ms": 2668.2721875000007,
+          "id": null,
+          "applicable": false
+        }
+      ]
+    },
+    "scaled_macs": {
+      "fastest": "0ec51e472c33beae",
+      "accuracy_under_budgets": [
+        {
+          "budget_ms": 1600.9633125000003,
+          "id": "0ec51e472c33beae",
+          "applicable": true
+        },
+        {
+          "budget_ms": 2134.6177500000003,
+          "id": "31977ff8dec9d005",
+          "applicable": true
+        },
+        {
+          "budget_ms": 2668.2721875000007,
+          "id": "99c4b7ad0cd1b78c",
+          "applicable": true
+        }
+      ]
+    },
+    "log_macs_ridge": {
+      "fastest": "0ec51e472c33beae",
+      "accuracy_under_budgets": [
+        {
+          "budget_ms": 1600.9633125000003,
+          "id": "0ec51e472c33beae",
+          "applicable": true
+        },
+        {
+          "budget_ms": 2134.6177500000003,
+          "id": "31977ff8dec9d005",
+          "applicable": true
+        },
+        {
+          "budget_ms": 2668.2721875000007,
+          "id": "99c4b7ad0cd1b78c",
+          "applicable": true
+        }
+      ]
+    },
+    "structure_ridge_primary": {
+      "fastest": "0ec51e472c33beae",
+      "accuracy_under_budgets": [
+        {
+          "budget_ms": 1600.9633125000003,
+          "id": "0ec51e472c33beae",
+          "applicable": true
+        },
+        {
+          "budget_ms": 2134.6177500000003,
+          "id": "31977ff8dec9d005",
+          "applicable": true
+        },
+        {
+          "budget_ms": 2668.2721875000007,
+          "id": "99c4b7ad0cd1b78c",
+          "applicable": true
+        }
+      ]
+    }
+  },
+  "latency_budgets_ms": [
+    1600.9633125000003,
+    2134.6177500000003,
+    2668.2721875000007
+  ],
+  "query_labels_accessed": false
+}

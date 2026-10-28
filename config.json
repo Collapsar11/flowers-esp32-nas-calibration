@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "dataset": "Flowers102",
+  "image_size": 160,
+  "split_sizes": {"train": 1020, "val": 1020, "test": 6149},
+  "seed": 20261027,
+  "ofa_id": "ofa_mbv3_d234_e346_k357_w1.0",
+  "depth": [2, 3, 4],
+  "expand": [3, 4, 6],
+  "kernel": [3, 5, 7],
+  "train": {
+    "batch_size": 32, "workers": 2, "head_epochs": 5,
+    "finetune_epochs": 50, "backbone_lr": 0.0001, "head_lr": 0.001,
+    "weight_decay": 0.0001, "label_smoothing": 0.1,
+    "crop_scale": [0.5, 1.0], "freeze_bn_running_stats": true
+  },
+  "search": {"population": 20, "generations": 5, "unique_budget": 120,
+    "head_epochs": 3, "finetune_epochs": 12, "mutation_probability": 0.2,
+    "full_training_shortlist": 30, "formal_candidates": 15},
+  "quality": {"validation_top1_target": 0.90, "max_reference_gap": 0.02,
+    "max_quantization_drop": 0.01},
+  "hardware": {"target": "esp32s3", "target_status": "user_confirmed", "precision": "int8",
+    "runtime": "tflite_micro_esp_nn", "weights_residency": "flash", "tensor_arena_residency": "psram",
+    "board": "ESP32-S3-N16R8", "board_config": "bread-compact-wifi-mpu6050",
+    "cpu_mhz": 240, "psram_mhz": 80, "psram_mode": "octal",
+    "physical_flash_bytes": 16777216, "physical_psram_bytes": 8388608,
+    "flash_budget_bytes": 12582912, "internal_ram_budget_bytes": 196608,
+    "psram_budget_bytes": 6291456, "latency_budget_ms": null,
+    "budget_basis": "provisional_model_allocations_reserving_system_headroom_verify_with_firmware",
+    "labels": "physical_device_measurements_required", "support_count": 6, "heldout_count": 9},
+  "emulation": {"purpose": "functional_validation_only", "allow_latency_labels": false}
+}

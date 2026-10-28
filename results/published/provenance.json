@@ -1,0 +1,33 @@
+{
+  "kind": "Derived aggregate export, not original acquisition receipts or immutable lock",
+  "raw_data_in_repository": false,
+  "original_evidence_preserved_locally": true,
+  "original_prediction_lock_sha256": "f0698cd1fb0cb8623b919c1a413acb9b0190ad258b49c13d16c9c1734f3a9fc3",
+  "original_query_evaluation_sha256": "cb000a2766c71ebbd89cb9ef643f91ece32018c7cf504ea49d3bfc7d64952ca7",
+  "original_query_summary_sha256": "97a66a3663342d5a93222cbe3cf140ca579135602731edd34fe016404655b7e0",
+  "original_query_audit_sha256": "db061a685902c8ec95b6b1a8069b2cd90333e1b85ca8320ed4a8cb0951db54df",
+  "original_audit_passed": true,
+  "source_edits": [
+    {
+      "path": "audit_physical_query.py",
+      "change": "Replace original board identifiers with required environment variables",
+      "original_sha256": "920eca3f5341e2c00707d319fe2b9a0c269b7f341bdaee0e7b670a83e5df59b1"
+    },
+    {
+      "path": "audit_physical_support.py",
+      "change": "Replace original board identifiers with required environment variables",
+      "original_sha256": "bbd24ae0cfa32c856f6859d992d49b98e1bd7c84f53375894dcefdec4f1e0b40"
+    },
+    {
+      "path": "run_physical_query.py",
+      "change": "Replace original board identifiers with required environment variables",
+      "original_sha256": "5878651d9f5fd9e5c96f77935c8b3352c5023cfd268a01e180c6f6dfe7a60851"
+    },
+    {
+      "path": "run_physical_support.py",
+      "change": "Replace original board identifiers with required environment variables",
+      "original_sha256": "2ea779f7728c8d80ad6274ace411d216b89738e1cd0603701b6a5a2b75cf2166"
+    }
+  ],
+  "scope": "Numerical reproduction from published per-network aggregates; raw serial and device identity audit requires the local full delivery"
+}

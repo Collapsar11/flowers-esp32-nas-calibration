@@ -1,0 +1,101 @@
+[
+  {
+    "id": "99c4b7ad0cd1b78c",
+    "latency_ms": 2667.5545,
+    "session_medians_ms": [
+      2667.5525,
+      2667.556,
+      2667.5545
+    ],
+    "psram_peak_bytes": 1461160,
+    "internal_heap_peak_bytes": 0
+  },
+  {
+    "id": "800c43cc322ed916",
+    "latency_ms": 2711.441,
+    "session_medians_ms": [
+      2711.438,
+      2711.442,
+      2711.441
+    ],
+    "psram_peak_bytes": 824488,
+    "internal_heap_peak_bytes": 0
+  },
+  {
+    "id": "da55a97c9b13819e",
+    "latency_ms": 2570.3755,
+    "session_medians_ms": [
+      2570.3725,
+      2570.3755,
+      2570.3805
+    ],
+    "psram_peak_bytes": 1438568,
+    "internal_heap_peak_bytes": 0
+  },
+  {
+    "id": "b0abc0ee21d8d9cd",
+    "latency_ms": 2230.395,
+    "session_medians_ms": [
+      2230.3955,
+      2230.3945,
+      2230.395
+    ],
+    "psram_peak_bytes": 1009032,
+    "internal_heap_peak_bytes": 0
+  },
+  {
+    "id": "0ec51e472c33beae",
+    "latency_ms": 1333.577,
+    "session_medians_ms": [
+      1333.5774999999999,
+      1333.574,
+      1333.577
+    ],
+    "psram_peak_bytes": 757128,
+    "internal_heap_peak_bytes": 0
+  },
+  {
+    "id": "8d0174570f15de70",
+    "latency_ms": 1749.1865,
+    "session_medians_ms": [
+      1749.1835,
+      1749.1865,
+      1749.1895
+    ],
+    "psram_peak_bytes": 1390312,
+    "internal_heap_peak_bytes": 0
+  },
+  {
+    "id": "705384e89fef7ed5",
+    "latency_ms": 1417.528,
+    "session_medians_ms": [
+      1417.5265,
+      1417.529,
+      1417.528
+    ],
+    "psram_peak_bytes": 989368,
+    "internal_heap_peak_bytes": 0
+  },
+  {
+    "id": "f32261df6a79ca5e",
+    "latency_ms": 2431.7929999999997,
+    "session_medians_ms": [
+      2431.7915000000003,
+      2431.7929999999997,
+      2431.799
+    ],
+    "psram_peak_bytes": 831512,
+    "internal_heap_peak_bytes": 0
+  },
+  {
+    "id": "31977ff8dec9d005",
+    "latency_ms": 1863.865,
+    "session_medians_ms": [
+      1863.865,
+      1863.865,
+      1863.863
+    ],
+    "psram_peak_bytes": 972440,
+    "internal_heap_peak_bytes": 0
+  }
+]

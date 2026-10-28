@@ -1,0 +1,46 @@
+{
+  "protocol_sha256": "cf36aec24cc79afa03424f708798180b6512b61501239ffe0ccee7ccc44e638b",
+  "frozen_utc": "2026-10-27T18:24:14.054777+00:00",
+  "status": "clarifying decision and accounting rules before all physical measurements",
+  "physical_measurements_used": 0,
+  "decision_rules": {
+    "raw_macs": {
+      "latency_order": "ascending MACs",
+      "resource_filter": "exact model bytes and uncalibrated QEMU PSRAM/internal heap",
+      "millisecond_budget_decisions": "NA: raw MACs are not milliseconds"
+    },
+    "all_three_six_label_methods": {
+      "resource_filter": "same six-label median-residual calibrated PSRAM/internal heap for all methods, plus exact model bytes",
+      "purpose": "isolate the contribution of latency features; memory estimator held identical"
+    },
+    "oracle": {
+      "resource_filter": "actual query PSRAM/internal heap and exact model bytes",
+      "latency": "actual query latency"
+    },
+    "quality_filter": "original INT8 validation top1 >= 0.90, not final image-test score",
+    "prediction_error_pool": "all nine query networks, including out-of-support-feature-range examples; no post-hoc exclusion",
+    "memory_baseline_comparison": "direct QEMU vs same-six median residual correction, evaluated independently of latency models"
+  },
+  "cost_accounting": {
+    "per_network_fields": [
+      "firmware_build_seconds",
+      "load_seconds",
+      "timing_session_seconds",
+      "memory_session_seconds",
+      "failed_attempt_seconds"
+    ],
+    "shared_setup": "report separately and disclose whether amortized; do not charge it only to the full-measurement baseline",
+    "method_cost": "shared setup plus six support acquisition costs plus feature extraction/fit/selection cost",
+    "full_measurement_cost": "same shared setup plus acquisition costs of all 15 plus direct selection cost",
+    "evaluation_only_cost": "nine query acquisition costs; report separately from six-label method decision cost",
+    "claim": "60% fewer distinct architectures for calibration/decision; measured wall-clock savings need not be 60%",
+    "sequential_baseline": "all 15 measured on the same single device under the same protocol; no ideal parallel-device baseline"
+  },
+  "runtime_documentation": {
+    "observed_esp_idf_version": "5.5.1",
+    "observed_version_source": "upstream/esp-idf/tools/cmake/version.cmake",
+    "commit": "fcae32885b0296b32044cb99ecbdc50d98dddb83",
+    "heap_api": "https://docs.espressif.com/projects/esp-idf/en/v5.5.1/esp32s3/api-reference/system/mem_alloc.html",
+    "note": "protocol.json timing reference is older API documentation; executable version is the pinned commit, not the citation version"
+  }
+}

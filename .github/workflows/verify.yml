@@ -1,0 +1,17 @@
+name: Reproduce aggregate results
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: requirements-analysis.txt
+      - run: python -m pip install -r requirements-analysis.txt
+      - run: python reproduce_results.py
+      - run: python -m unittest test_strict6 -v

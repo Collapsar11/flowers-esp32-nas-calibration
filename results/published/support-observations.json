@@ -1,0 +1,68 @@
+[
+  {
+    "id": "3ac9595932bf99d7",
+    "latency_ms": 1387.9095,
+    "session_medians_ms": [
+      1387.9054999999998,
+      1387.912,
+      1387.9095
+    ],
+    "psram_peak_bytes": 942632,
+    "internal_heap_peak_bytes": 0
+  },
+  {
+    "id": "2e886c99bc6d480a",
+    "latency_ms": 2826.1184999999996,
+    "session_medians_ms": [
+      2826.115,
+      2826.12,
+      2826.1184999999996
+    ],
+    "psram_peak_bytes": 850936,
+    "internal_heap_peak_bytes": 0
+  },
+  {
+    "id": "baa866b0d2d03911",
+    "latency_ms": 2298.7705,
+    "session_medians_ms": [
+      2298.7705,
+      2298.7705,
+      2298.7690000000002
+    ],
+    "psram_peak_bytes": 1475224,
+    "internal_heap_peak_bytes": 0
+  },
+  {
+    "id": "88a9e88027b9df64",
+    "latency_ms": 2007.9765000000002,
+    "session_medians_ms": [
+      2007.9765000000002,
+      2007.9735,
+      2007.978
+    ],
+    "psram_peak_bytes": 780920,
+    "internal_heap_peak_bytes": 0
+  },
+  {
+    "id": "e61faf158fc55410",
+    "latency_ms": 2261.259,
+    "session_medians_ms": [
+      2261.2625,
+      2261.259,
+      2261.2565000000004
+    ],
+    "psram_peak_bytes": 1024872,
+    "internal_heap_peak_bytes": 0
+  },
+  {
+    "id": "4d78e8bc0a994f55",
+    "latency_ms": 1599.1675,
+    "session_medians_ms": [
+      1599.1680000000001,
+      1599.1675,
+      1599.1655
+    ],
+    "psram_peak_bytes": 770632,
+    "internal_heap_peak_bytes": 0
+  }
+]
