@@ -2,7 +2,7 @@
 
 ## 1. Published aggregate reproduction
 
-Run `reproduce_results.py` with the dependencies in `requirements-analysis.txt`. It checks the six-network support split, fits only those six labels, reproduces the original predictions and decisions, then evaluates the nine query observations. `test_strict6.py` provides synthetic protocol rejection and numerical correctness tests; its fixtures are not hardware evidence.
+Run `src/reproduce_results.py` with the dependencies in `requirements/analysis.txt`. It checks the six-network support split, fits only those six labels, reproduces the original predictions and decisions, then evaluates the nine query observations. `tests/test_strict6.py` provides synthetic protocol rejection and numerical correctness tests; its fixtures are not hardware evidence.
 
 `results/published/frozen-predictions.json` is an export of selected fields from the original lock, **not the original immutable lock file**. The original lock hash appears in `provenance.json`. The repository alone cannot authenticate raw acquisition, individual serial samples, or board identity.
 
@@ -18,11 +18,11 @@ The training scripts originate from a Linux GPU server environment, with separat
 
 Relevant entry points:
 
-- `bootstrap_server.sh`: OFA/MCUNet source setup and dataset preparation; originally uses an existing Conda environment.
-- `bootstrap_tflite.sh`: TensorFlow 2.16.2, tf-keras 2.16.0 and conversion dependencies.
-- `bootstrap_esp.sh`: ESP-IDF v5.5.1 and Xtensa QEMU tooling.
-- `pipeline.py`, `search_parallel.py`, `campaign.py`: pretrained search, full candidate training and verification.
-- `qat_tflite.py`, `build_tflite_firmware.sh`, `build_measure_firmware.sh`: accepted TFLite Micro path.
+- `scripts/setup/bootstrap_server.sh`: OFA/MCUNet source setup and dataset preparation; originally uses an existing Conda environment.
+- `scripts/setup/bootstrap_tflite.sh`: TensorFlow 2.16.2, tf-keras 2.16.0 and conversion dependencies.
+- `scripts/setup/bootstrap_esp.sh`: ESP-IDF v5.5.1 and Xtensa QEMU tooling.
+- `src/pipeline.py`, `src/search_parallel.py`, `src/campaign.py`: pretrained search, full candidate training and verification.
+- `src/qat_tflite.py`, `scripts/build/build_tflite_firmware.sh`, `scripts/build/build_measure_firmware.sh`: accepted TFLite Micro path.
 
 Prepare Flowers 102 and the upstream pretrained weights under their own terms. Install suitable PyTorch/torchvision and the conversion/toolchain dependencies. Check the bootstrap scripts and adapt their environment paths. Some upstream checkout commands track a moving branch; exact reconstruction should use the original experiment's recorded revisions/build manifests from the complete evidence delivery rather than assume a fresh clone is identical.
 
@@ -34,7 +34,7 @@ The accepted board configuration is ESP32-S3-N16R8, CPU 240 MHz, 8 MB Octal PSRA
 
 For the four original field acquisition/audit scripts, board-specific literals were replaced by required `FLOWERS_BOARD_MAC` and, for acquisition, `FLOWERS_SERIAL_PORT` environment variables. Missing configuration fails at import rather than selecting another device automatically. These scripts also require the original compatible firmware/manifests, prior backup evidence and frozen campaign directory structure. Merely setting the environment variables is not sufficient to run a new experiment.
 
-The source-change manifest records original source hashes. The published numerical core (`strict6.py`, `measurement_io.py`) and frozen protocol/public features were not changed. Original local code and evidence remain intact. New campaigns must use separate output directories and preserve the strict six-support/nine-query boundary.
+The source-change manifest records original source hashes. The repository has since been reorganized: Python entry points are under `src/`, shell entry points under `scripts/`, and dependencies under `requirements/`. See [repository layout](REPOSITORY_LAYOUT.md) and [file moves](file-moves.json). Source-path changes also change source hashes; this checkout must not be substituted for the original code when validating the original immutable raw-record lock. Calibration mathematics, frozen protocol/public features and published numerical results are unchanged. Use the original local delivery for the original raw-record audit. New campaigns must use separate output directories and preserve the strict six-support/nine-query boundary.
 
 ## 5. Interpretation
 

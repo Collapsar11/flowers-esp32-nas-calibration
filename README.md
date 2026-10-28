@@ -54,28 +54,49 @@ Python 3.9–3.11 and NumPy 1.24.4 suffice; no GPU, dataset or board is needed f
 
 ```bash
 python3 -m venv .venv-review
-.venv-review/bin/python -m pip install -r requirements-analysis.txt
-.venv-review/bin/python reproduce_results.py
-.venv-review/bin/python -m unittest test_strict6 -v
+.venv-review/bin/python -m pip install -r requirements/analysis.txt
+.venv-review/bin/python src/reproduce_results.py
+.venv-review/bin/python -m unittest discover -s tests -p 'test_strict6.py' -v
 ```
 
-`reproduce_results.py` rebuilds calibration using only the six support aggregates, checks it against the exported frozen parameters/predictions, and then computes the held-out metrics and decisions. It does not modify the experiment or use query labels for fitting. This is **numerical reproduction from aggregates**, not a fresh hardware experiment or a raw-log provenance audit.
+`src/reproduce_results.py` rebuilds calibration using only the six support aggregates, checks it against the exported frozen parameters/predictions, and then computes the held-out metrics and decisions. It does not modify the experiment or use query labels for fitting. This is **numerical reproduction from aggregates**, not a fresh hardware experiment or a raw-log provenance audit.
 
 ## Repository map
 
+```text
+flowers-esp32-nas-calibration/
+├── README.md              项目流程、结果和使用入口
+├── src/                   Python 源码：搜索、训练、量化、测量、评估
+├── scripts/
+│   ├── setup/             环境安装脚本
+│   ├── build/             固件构建脚本
+│   └── run/               实验运行与验收脚本
+├── tests/                 协议与证据校验测试
+├── requirements/          分用途依赖清单
+├── configs/               实验配置
+├── architectures/         15 个最终候选的架构
+├── docs/                  实验结果、复现和目录说明
+├── results/               冻结协议、网络特征与汇总结果
+├── firmware-measure/      实板测量固件源码
+├── firmware-tflite/       TFLite 验证固件源码
+└── firmware/              历史 ESP-DL 路径的固件源码
+```
+
+脚本命令从仓库根目录执行；完整说明见 [目录与运行入口](docs/REPOSITORY_LAYOUT.md)。
+
 | Path | Purpose |
 |---|---|
-| `config.json`, `architectures/` | Search/training configuration and 15 final architectures |
-| `pipeline.py`, `search_parallel.py`, `campaign.py` | Pretrained training, NAS and candidate campaign |
-| `qat_tflite.py`, `convert_tflite.py`, `validate_candidate.py` | QAT, INT8 export and validation |
-| `final_test.py` | Full Flowers 102 test-set evaluation |
-| `firmware-measure/`, `build_measure_firmware.sh` | Measurement firmware source/build |
+| `configs/config.json`, `architectures/` | Search/training configuration and 15 final architectures |
+| `src/pipeline.py`, `src/search_parallel.py`, `src/campaign.py` | Pretrained training, NAS and candidate campaign |
+| `src/qat_tflite.py`, `src/convert_tflite.py`, `src/validate_candidate.py` | QAT, INT8 export and validation |
+| `src/final_test.py` | Full Flowers 102 test-set evaluation |
+| `firmware-measure/`, `scripts/build/build_measure_firmware.sh` | Measurement firmware source/build |
 | `firmware-tflite/` | TFLite deployment validation firmware |
-| `firmware/`, `quantize.py`, `qat.py` | Earlier experimental ESP-DL path; not the accepted final runtime |
-| `strict6.py`, `measurement_io.py` | Frozen protocol, calibration, selection and record validation |
+| `firmware/`, `src/quantize.py`, `src/qat.py` | Earlier experimental ESP-DL path; not the accepted final runtime |
+| `src/strict6.py`, `src/measurement_io.py` | Frozen protocol, calibration, selection and record validation |
 | `results/strict6-esp32-v1/` | Original design and public features, unchanged |
 | `results/published/` | Derived aggregate export, frozen predictions, metrics, accuracy and provenance |
-| `reproduce_results.py` | Portable numeric reproduction |
+| `src/reproduce_results.py` | Portable numeric reproduction |
 | `docs/REPRODUCTION.md` | Training, firmware and full-evidence boundaries |
 
 The original acquisition/audit scripts are included for traceability. Their serial port and device MAC are now required environment variables; they are **not** portable one-click flash commands. See [reproduction notes](docs/REPRODUCTION.md) before using hardware scripts.
